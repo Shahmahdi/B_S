@@ -8,7 +8,7 @@ import PersonIcon from '@material-ui/icons/Person';
 export const Sidebar = () => {
   return (
     <List 
-      className="flex flex-column w-100" 
+      className="flex flex-col w-full" 
       style={{ padding: 0 }}
     >
       <ListItem 

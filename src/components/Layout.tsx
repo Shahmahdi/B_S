@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Drawer } from "@material-ui/core";
 import { Sidebar } from "./Sidebar";
 import { Topbar } from "./Topbar";
 
 export const Layout = (props: { component: any }) => {
-  const [openSidebar, setOpenSidebar] = useState(true);
+  const [openSidebar, setOpenSidebar] = useState(
+    window.innerWidth <= 760 ? false : true
+  );
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      let currentHideNav = window.innerWidth >= 760;
+      if (currentHideNav !== openSidebar) {
+        setOpenSidebar(currentHideNav);
+      }
+    });
+  });
 
   return (
     <div className="flex w-full h-screen">

@@ -10,110 +10,46 @@ export const Sidebar = withRouter((props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <List component="nav" aria-label="main mailbox folders" className="flex flex-col w-full" style={{ padding: 0 }}>
-      <ListItem
-        button
-        style={{
-          backgroundColor: "rgb(0, 105, 92)",
-          minHeight: "64px",
-        }}
-      >
-        <LocalLibraryIcon
-          style={{
-            width: "40px",
-            paddingRight: "6px",
-            fontSize: "2rem",
-          }}
-        />
-        <ListItemText
-          primary={
-            <span
-              style={{
-                fontSize: "1.3rem",
-                fontWeight: "bold",
-                paddingTop: "6px",
-                paddingLeft: "0px",
-              }}
-            >
-              ISP Management
-            </span>
-          }
-        />
+    <List className="flex flex-col w-full" disablePadding={true}>
+      <ListItem className="cursor-pointer bg-sidebarDeep h-16">
+        <LocalLibraryIcon fontSize="large" />
+        <span className="font-bold pl-2 pt-1 text-xl">ISP Management</span>
       </ListItem>
-      <List
-        component="nav"
-        style={{
-          flex: 1,
-          backgroundColor: "rgb(0, 121, 107)",
-        }}
-      >
+      <List component="nav" className="flex-1 bg-sidebarLight">
         <ListItem
-        className="cursor-pointer"
-          // button
-          selected={selectedIndex === 0}
-          style={
-            selectedIndex === 0
-              ? {
-                  backgroundColor: "rgb(0, 96, 84)",
-                }
-              : {}
-          }
+          className={`cursor-pointer ${selectedIndex === 0 && "bg-sidebarSelected"}`}
           onClick={() => {
             setSelectedIndex(0);
             props.history.push("/");
           }}
         >
-          <DeviceHubIcon style={{ width: "40px", paddingRight: "6px", opacity: 0.5 }} />
+          <DeviceHubIcon className="pr-1 opacity-50" style={{ width: "40px" }} />
           <ListItemText
-            primary={
-              <span
-                style={{
-                  fontSize: "15px",
-                  fontWeight: "lighter",
-                  padding: "0px 6px",
-                }}
-              >
-                Boxes
-              </span>
-            }
+            primary={<span className="font-light px-1 text-base">Boxes</span>}
           />
         </ListItem>
         <ListItem
-          className="cursor-pointer"
-          selected={selectedIndex === 1}
-          style={
-            selectedIndex === 1
-              ? {
-                  backgroundColor: "rgb(0, 96, 84)",
-                }
-              : {}
-          }
+          className={`cursor-pointer ${selectedIndex === 1 && "bg-sidebarSelected"}`}
           onClick={() => {
             setSelectedIndex(1);
             props.history.push("/settings");
           }}
         >
-          <SettingsIcon style={{ width: "40px", paddingRight: "6px", opacity: 0.5 }} />
+          <SettingsIcon className="pr-1 opacity-50" style={{ width: "40px" }} />
           <ListItemText
-            primary={
-              <span
-                style={{
-                  fontSize: "15px",
-                  fontWeight: "lighter",
-                  padding: "0px 6px",
-                }}
-              >
-                Settings
-              </span>
-            }
+            primary={<span className="font-light px-1 text-base">Settings</span>}
           />
         </ListItem>
       </List>
-      <ListItem style={{ backgroundColor: "rgb(0, 105, 92)" }}>
-        <PersonIcon style={{ width: "40px", paddingRight: "6px" }} />
+      <ListItem className="bg-sidebarDeep">
+        <PersonIcon className="pr-2" style={{ width: "40px" }} />
         <ListItemText
           primary="Shah Arfan Mahdi"
-          secondary={<span style={{ fontSize: "13px", color: "white" }}>Software Engineer</span>}
+          secondary={
+            <span className="text-white text-sm" style={{ fontSize: "13px" }}>
+              Software Engineer
+            </span>
+          }
         />
       </ListItem>
     </List>

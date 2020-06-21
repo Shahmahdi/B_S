@@ -4,18 +4,20 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { BoxesPage } from "./pages/boxes/Index";
 import { SettingsPage } from "./pages/settings/Index";
 import { Layout } from "./components/Layout";
+import { LoginPage } from "./pages/login/Index";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route 
+          exact 
+          path="/" 
+          component={LoginPage}
+        />
         <Route
           exact
-          path="/"
-          // render={() =>
-          // 	isAuthenticate() ? <Redirect to="/" /> : <HomePage />
-          // }
-          // component={BoxesPage}
+          path="/boxes"
           render={() => <Layout component={BoxesPage} />}
         />
         <Route

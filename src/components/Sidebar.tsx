@@ -35,7 +35,10 @@ export const Sidebar = withRouter(
         >
           <ListItem
             className="cursor-pointer bg-sidebarDeep h-16"
-            onClick={() => props.history.push("/")}
+            onClick={() => {
+              setSelectedIndex(0);
+              props.history.push("/boxes");
+            }}
           >
             <LocalLibraryIcon fontSize="large" />
             <span className="font-bold pl-2 pt-1 text-xl">ISP Management</span>
@@ -47,7 +50,7 @@ export const Sidebar = withRouter(
               }`}
               onClick={() => {
                 setSelectedIndex(0);
-                props.history.push("/");
+                props.history.push("/boxes");
                 if (props.smallDevice) {
                   props.setOpenSidebar(false);
                 }
